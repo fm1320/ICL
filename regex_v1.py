@@ -13,7 +13,7 @@ or if he doesn't input a parameter it will go through the list of all assays in 
 '''
 import re #time complexity issues of finite state machines ?
 import pandas as pd
-file_path="/content/drive/My Drive/Imperial college London/alla.csv"
+file_path="/content/drive/My Drive/Imperial college London/all_assays.csv"
 assay=[]
 df = pd.read_csv(file_path,dtype= str) # READ CSV AS STRING !!!
 assay = df.values.tolist()
@@ -37,5 +37,15 @@ def finder(text,user_assay=None):
       print('\n'.join(out2))
 
 # Run the program outside of the function    
-text = "Metabolomics is used to determine the metabolic profile of biological samples, identify specific biomarkers, and explore possible metabolic pathways. It has been used during drug development [1], and in clinical disease research [2, 3], pathology [4], toxicology [5] and nutrition studies [6]. Metabolomics mainly utilizes NMR spectroscopy [7], liquid chromatography (LC)–mass spectrometry [8] and gas chromatography–mass spectrometry [9] to analyze and evaluate biological specimens. Each analytical technique has its own advantages and shortcomings. none of them can be used individually to systematically and accurately identify metabolites in complex biological matrices. Since accurate metabolite identification directly determines the usefulness of the metabolomic analysis, metabolite identification has gained increased attention from the metabolomics research community. 1H NMR spectroscopy is often used for metabolomics research. As all 1H nucleuses have the same sensitivity, the reproducibility of NMR spectroscopy is typically high."   
+text = ('Metabolomics is used to determine the metabolic profile of biological samples, identify specific biomarkers,' 
+       'and explore possible metabolic pathways. It has been used during drug development [1], '
+       'and in clinical disease research [2, 3], pathology [4], toxicology [5] and nutrition studies [6].' 
+       'Metabolomics mainly utilizes NMR spectroscopy [7], liquid chromatography (LC)–mass spectrometry [8] and' 
+       'gas chromatography–mass spectrometry [9] to analyze and evaluate biological specimens. '
+       'Each analytical technique has its own advantages and shortcomings. none of them can be used individually' 
+       'to systematically and accurately identify metabolites in complex biological matrices. '
+       'Since accurate metabolite identification directly determines the usefulness of the metabolomic analysis,' 
+       'metabolite identification has gained increased attention from the metabolomics research community. '
+       '1H NMR spectroscopy is often used for metabolomics research. As all 1H nucleuses have the same sensitivity,' 
+       'the reproducibility of NMR spectroscopy is typically high.' )   
 x=finder(text, "") # You should write "" instead of None for the input of the function
