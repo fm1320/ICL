@@ -42,7 +42,7 @@ def main():
          #import scispacy
          nlp = spacy.load("en_core_sci_sm")
       elif sel=="BiAssay":
-         nlp = spacy.load(r'C:\Users\Filip\Desktop\BiA') #Location of directory of spacy model
+         nlp = spacy.load('./BiA') #Location of directory of spacy model
       elif sel=="Spacy core en":
          import en_core_web_sm
          nlp = en_core_web_sm.load() 
