@@ -1,0 +1,10 @@
+###### Requirements without Version Specifiers ######`
+streamlit
+spacy_streamlit
+spacy
+os
+PIL
+genism
+trafilatura
+pdfplumber
+###### Requirements with Version Specifiers ######
