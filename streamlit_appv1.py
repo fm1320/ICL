@@ -17,7 +17,7 @@ import trafilatura
 def main():
    """A Simple NLP app with Spacy-Streamlit"""
    st.title("Text processing app for biological scientific papers")
-   menu = ["Home","NER","Summarization","Trainer"]
+   menu = ["Home","NER","Summarization"]
    choice = st.sidebar.selectbox("Menu",menu)
    if choice == "Home":
       
@@ -70,7 +70,7 @@ def main():
       raw_text = st.text_input('Enter text') #text is stored in this variable
       summWords = summarize(raw_text)
       st.subheader("Summary")
-      #st.write(summWords)
+      st.write(summWords)
 
 if __name__ == '__main__':
    main()
