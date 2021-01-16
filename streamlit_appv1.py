@@ -10,7 +10,7 @@ from gensim.summarization.summarizer import summarize
 from gensim.summarization import keywords
 
 import trafilatura
-import pdfplumber
+#import pdfplumber
 
 
 
