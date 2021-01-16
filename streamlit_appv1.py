@@ -26,7 +26,7 @@ def main():
       st.markdown(link, unsafe_allow_html=True)
       st.write("""<---- Choose and try out one of the NLP tasks available from the drop down menu on the left""")
 	  st.markdown("![Alt Text](https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/Imperial_College_London_monotone_logo.jpg/320px-Imperial_College_London_monotone_logo.jpg)")
-      
+      st.write(""".""")
       
       #st.subheader("Tokenization")
       #raw_text = st.text_area("Your Text","Enter Text Here")
