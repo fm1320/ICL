@@ -47,7 +47,7 @@ def main():
       elif sel=="Spacy core en":
          import en_core_web_sm
          nlp = en_core_web_sm.load() 
-	  elif sel=="MIA":
+      elif sel=="MIA":
          nlp = spacy.load('./NiA')	  
       
       method = st.sidebar.selectbox("Choose input method (recommended:text box)", ["Text box", "URL"])   
