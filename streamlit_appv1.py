@@ -13,8 +13,8 @@ import trafilatura
 import en_core_web_lg
 import thinc
 
-	
-	
+    
+    
 
 
 
@@ -52,10 +52,9 @@ def main():
          import en_core_web_sm
          nlp = en_core_web_sm.load() 
       elif sel=="LG":
-		 if (bool(thinc.extra.load_nlp.VECTORS) == False):
-			 nlp=spacy.load('en_core_web_lg')
-			 
-		 nlp = spacy.load('./lg')	  
+         if (bool(thinc.extra.load_nlp.VECTORS) == False):
+             nlp=spacy.load('en_core_web_lg')             
+         nlp = spacy.load('./lg')     
       
       method = st.sidebar.selectbox("Choose input method (recommended:text box)", ["Text box", "URL"])   
 
