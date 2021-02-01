@@ -12,7 +12,7 @@ import trafilatura
 #import pdfplumber
 #import en_core_web_lg
 import thinc
-
+#!python -m spacy download en_core_web_lg
     
     
 
