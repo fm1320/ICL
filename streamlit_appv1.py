@@ -37,7 +37,7 @@ def main():
    elif choice == "NER":
       st.subheader("Named Entity Recognition")
       # Add a selectbox to the sidebar:
-      sel = st.sidebar.selectbox("Which NER model would you like to use ?", ["SciSpacy", "BiAssay", "Spacy core en","MIA"])
+      sel = st.sidebar.selectbox("Which NER model would you like to use ?", ["SciSpacy", "BiAssay", "Spacy core en","LG"])
       
       if sel== "SciSpacy":
          #import scispacy
@@ -47,8 +47,8 @@ def main():
       elif sel=="Spacy core en":
          import en_core_web_sm
          nlp = en_core_web_sm.load() 
-      elif sel=="MIA":
-         nlp = spacy.load('./NiA')	  
+      elif sel=="LG":
+         nlp = spacy.load('./lg')	  
       
       method = st.sidebar.selectbox("Choose input method (recommended:text box)", ["Text box", "URL"])   
 
