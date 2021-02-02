@@ -54,7 +54,7 @@ def main():
       elif sel=="LG":
          #if (bool(thinc.extra.load_nlp.VECTORS) == False):
          #nlp=spacy.load('en_core_web_lg')             
-         nlp = spacy.load('./lg')     
+         nlp = spacy.load('./lg',vectors=False)     
       
       method = st.sidebar.selectbox("Choose input method (recommended:text box)", ["Text box", "URL"])   
 
