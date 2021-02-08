@@ -11,7 +11,7 @@ from gensim.summarization import keywords
 import trafilatura
 #import pdfplumber
 import en_core_web_md
-
+#import zipfile
 #!python -m spacy download en_core_web_lg
     
     
@@ -53,9 +53,13 @@ def main():
          nlp = en_core_web_sm.load() 
       elif sel=="LG":
          #if (bool(thinc.extra.load_nlp.VECTORS) == False):
-         nlp=spacy.load('en_core_web_md')             
-         #nlp = spacy.load('./lg')     
-      
+         #nlp=spacy.load('en_core_web_md')             
+         #nlp = spacy.load('./lg')
+         cloud_model_location="https://drive.google.com/drive/folders/1PGdcr1CjV_Dbb58Ps61sysloQPaun3PY?usp=sharing"		 
+         with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
+            from GD_download import download_file_from_google_drive
+            download_file_from_google_drive(cloud_model_location, model)
+			nlp = spacy.load(model)
       method = st.sidebar.selectbox("Choose input method (recommended:text box)", ["Text box", "URL"])   
 
       
