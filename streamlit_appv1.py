@@ -59,7 +59,7 @@ def main():
          #with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
             #from GD_download import download_file_from_google_drive
             #download_file_from_google_drive(cloud_model_location, model)
-            nlp = spacy.load(cloud_model_location)
+         nlp = spacy.load(cloud_model_location)
       method = st.sidebar.selectbox("Choose input method (recommended:text box)", ["Text box", "URL"])   
 
       
