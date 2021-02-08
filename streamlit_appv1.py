@@ -56,10 +56,10 @@ def main():
          #nlp=spacy.load('en_core_web_md')             
          #nlp = spacy.load('./lg')
          cloud_model_location="https://drive.google.com/drive/folders/1PGdcr1CjV_Dbb58Ps61sysloQPaun3PY?usp=sharing"         
-         with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
-            from GD_download import download_file_from_google_drive
-            download_file_from_google_drive(cloud_model_location, model)
-            nlp = spacy.load(model)
+         #with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
+            #from GD_download import download_file_from_google_drive
+            #download_file_from_google_drive(cloud_model_location, model)
+            nlp = spacy.load(cloud_model_location)
       method = st.sidebar.selectbox("Choose input method (recommended:text box)", ["Text box", "URL"])   
 
       
