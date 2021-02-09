@@ -13,7 +13,7 @@ import trafilatura
 import en_core_web_md
 #import zipfile
 #!python -m spacy download en_core_web_lg
-
+@st.cache
 def model_loader(link,foldername):
   """
   returns path of zipped folder with trained spacy model
