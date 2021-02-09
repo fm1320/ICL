@@ -13,9 +13,38 @@ import trafilatura
 import en_core_web_md
 #import zipfile
 #!python -m spacy download en_core_web_lg
-    
-    
 
+def model_loader(link,foldername):
+  """
+  returns path of zipped folder with trained spacy model
+  
+  """
+  import requests
+  import zipfile
+  import tempfile
+  import spacy
+
+  dir=tempfile.gettempdir()
+
+
+  #link= "https://github.com/fm1320/IC_NLP/releases/download/V3/V3-20210203T001829Z-001.zip"
+
+  results = requests.get(link)
+  #with open(dir, 'wb') as f:
+  fp = tempfile.TemporaryFile()  
+  fp.write(results.content)
+
+
+  file = zipfile.ZipFile(fp)
+  with tempfile.TemporaryDirectory() as tmpdirname:
+    file.extractall(path=dir)
+
+  #print(dir)
+  end_path=os.path.join(dir, foldername)
+  files = os.listdir(end_path)
+  #for file in files:
+    #print(file)
+  return end_path
 
 
 def main():
@@ -52,14 +81,8 @@ def main():
          import en_core_web_sm
          nlp = en_core_web_sm.load() 
       elif sel=="LG":
-         #if (bool(thinc.extra.load_nlp.VECTORS) == False):
-         #nlp=spacy.load('en_core_web_md')             
-         #nlp = spacy.load('./lg')
-         cloud_model_location="https://drive.google.com/drive/folders/1PGdcr1CjV_Dbb58Ps61sysloQPaun3PY?usp=sharing"         
-         #with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
-            #from GD_download import download_file_from_google_drive
-            #download_file_from_google_drive(cloud_model_location, model)
-         nlp = spacy.load(cloud_model_location)
+         path=model_loader("https://github.com/fm1320/IC_NLP/releases/download/V3/V3-20210203T001829Z-001.zip", "V3")   
+         nlp = spacy.load(path)
       method = st.sidebar.selectbox("Choose input method (recommended:text box)", ["Text box", "URL"])   
 
       
