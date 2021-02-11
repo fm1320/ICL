@@ -22,7 +22,7 @@ output=[]
 def finder(text,user_assay=None):    
     if (user_assay==None): 
       for i in range(len(assay)):
-       out2=re.findall(r'[^.?!]*(?<=[.?\s!])%s(?=[\s.?!])[^.?!]*[.?!]' % assay[i] , text )
+       out2=re.findall(r'[^.?!]*(?<=[.?\s!])%s(?=[\s.?!])[^.?!]*[.?!]' % assay[i] , text ,  flags=re.IGNORECASE )
        print('\n'.join(out2))
        output.append(out2) # just a list with all the results
       return 0
