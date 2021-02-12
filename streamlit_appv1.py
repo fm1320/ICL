@@ -109,7 +109,7 @@ def main():
          st.title("THIS PART IS UNDER DEVELOPMENT")
          r_text = st.text_area("Enter text for entity recognition with Regex","Text here")
          iz=finder(r_text,"")
-         st.write(iz)
+         #st.write(iz)
       method = st.sidebar.selectbox("Choose input method (recommended:text box)", ["Text box", "URL"])   
 
       
