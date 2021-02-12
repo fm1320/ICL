@@ -56,7 +56,7 @@ def finder(text,user_assay=None):
     st.write(df.head(5))
     output=[]
     #if (user_assay==None): 
-     for i in range(len(assay)):
+    for i in range(len(assay)):
       out2=re.findall( r'\b%s\b' % assay[i] , text ,  flags=re.IGNORECASE )
       #out2=re.findall(r'[^.?!]*(?<=[.?\s!])%s(?=[\s.?!])[^.?!]*[.?!]' % assay[i] , text ,  flags=re.IGNORECASE )
       #print('\n'.join(out2))
