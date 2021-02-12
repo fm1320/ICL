@@ -45,35 +45,29 @@ def model_loader(link,foldername):
   #for file in files:
     #print(file)
   return end_path
-  
-def finder(text,user_assay=None):    
-    import pandas as pd
+
+
+def finder(text,user_assay):    
     import re
+    import pandas as pd
     file_path="./all_assays.csv"
     assay=[]
-    df = pd.read_csv(file_path,dtype= str) # READ CSV AS STRING !!!
-    assay = df.values.tolist()
-    st.write(df.head(5))
-    output=[]
-    #if (user_assay==None): 
+    df = pd.read_csv(file_path,dtype= str, encoding='latin1') # READ CSV AS STRING !!!
+    assay = df['1H NMR'].values.tolist()
+    assay = list(map(''.join, assay)) # convert list of lists to list of strings 
+    nuovo=[]
+    pattern1=r'[^.?!]*(?<=[.?\s!])%s(?=[\s.?!])[^.?!]*[.?!]' #extracts full sentences that contain a word 
+    pattern2=r'\b%s\b' #extracts a given word 
+    index=[]
     for i in range(len(assay)):
-      out2=re.findall( r'\b%s\b' % assay[i] , text ,  flags=re.IGNORECASE )
-      #out2=re.findall(r'[^.?!]*(?<=[.?\s!])%s(?=[\s.?!])[^.?!]*[.?!]' % assay[i] , text ,  flags=re.IGNORECASE )
-      #print('\n'.join(out2))
-      st.write(out2)
-      output.append(out2) # just a list with all the results
-      #return 0
-    # if the user chooses a custom assay not from the list
-    #else:  
-     #out2=re.findall(r'[^.?!]*(?<=[.?\s!])%s(?=[\s.?!])[^.?!]*[.?!]' % user_assay , text )
-     #if (len(out2) == 0):
-      #print("No matching assays")
-     #else:
-      #output.append(out2) 
-      #print("At least one match was found :")
-      #print('\n'.join(out2))  
-    return output
-
+      tmp=re.findall(pattern2 %assay[i],text, flags=re.IGNORECASE)  
+      if (len(tmp)>0):
+       index.append(i)
+       nuovo.append(tmp)
+    res_list = [assay[j] for j in index]
+    #print("Nuovo:", nuovo)
+    st.write("The assays mentioned are: \n ", res_list, type(res_list))
+    return res_list
 
 def main():
    """A Simple NLP app with Spacy-Streamlit"""
@@ -112,8 +106,8 @@ def main():
          path=model_loader("https://github.com/fm1320/IC_NLP/releases/download/V3/V3-20210203T001829Z-001.zip", "V3")   
          nlp = spacy.load(path)
       elif sel=="Regex":
+         st.title("THIS PART IS UNDER DEVELOPMENT")
          r_text = st.text_area("Enter text for entity recognition with Regex","Text here")
-         
          iz=finder(r_text,"")
          st.write(iz)
       method = st.sidebar.selectbox("Choose input method (recommended:text box)", ["Text box", "URL"])   
