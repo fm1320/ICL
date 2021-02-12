@@ -111,7 +111,7 @@ def main():
       elif sel=="Regex":
          r_text = st.text_area("Enter text for entity recognition with Regex","Text here")
          iz=finder(r_text,"")
-         st.write(iz)
+         st.write("vmro")
       method = st.sidebar.selectbox("Choose input method (recommended:text box)", ["Text box", "URL"])   
 
       
@@ -120,7 +120,7 @@ def main():
          docx = nlp(raw_text)
          spacy_streamlit.visualize_ner(docx,labels=nlp.get_pipe('ner').labels)
 
-      if method == "URL":
+      if method == "URL" and sel !="Regex":
          user_input = st.text_input("Enter page URL of an HTML file")
          if user_input is not None:
             downloaded = trafilatura.fetch_url(user_input)
