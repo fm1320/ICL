@@ -61,12 +61,12 @@ def finder(text,user_assay=None):
        output.append(out2) # just a list with all the results
       #return 0
     # if the user chooses a custom assay not from the list
-    else:  
-     out2=re.findall(r'[^.?!]*(?<=[.?\s!])%s(?=[\s.?!])[^.?!]*[.?!]' % user_assay , text )
-     if (len(out2) == 0):
+    #else:  
+     #out2=re.findall(r'[^.?!]*(?<=[.?\s!])%s(?=[\s.?!])[^.?!]*[.?!]' % user_assay , text )
+     #if (len(out2) == 0):
       #print("No matching assays")
-     else:
-      output.append(out2) 
+     #else:
+      #output.append(out2) 
       #print("At least one match was found :")
       #print('\n'.join(out2))  
     return output
