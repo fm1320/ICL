@@ -66,7 +66,7 @@ def finder(text,user_assay):
        nuovo.append(tmp)
     res_list = [assay[j] for j in index]
     #print("Nuovo:", nuovo)
-    st.write("The assays mentioned are: \n ", res_list, type(res_list))
+    st.write("The assays mentioned are: \n ", res_list)
     return res_list
 
 def main():
