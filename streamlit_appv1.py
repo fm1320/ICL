@@ -115,7 +115,7 @@ def main():
       method = st.sidebar.selectbox("Choose input method (recommended:text box)", ["Text box", "URL"])   
 
       
-      if method == "Text box":
+      if method == "Text box" and sel !="Regex":
          raw_text = st.text_area("Enter text for entity recognition","Text here")   
          docx = nlp(raw_text)
          spacy_streamlit.visualize_ner(docx,labels=nlp.get_pipe('ner').labels)
