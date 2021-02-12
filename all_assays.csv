@@ -77,7 +77,7 @@ LC-MS
 LC/MS
 Ultra-Performance Liquid Chromatography Mass Spectrometry
 UPLC-MS
-HPLC-MS
+HPLC
 High-pressure liquid chromatography
 High performance liquid chromatography
 High-performance liquid chromatography
@@ -101,7 +101,7 @@ Electrospray ionisation
 Electro-spray ionization
 Electro-spray ionisation
 ESI
-Quadrupole-quadrupole
+quadrupole
 TOF
 Time-of-flight
 Time of flight
@@ -170,3 +170,30 @@ Shimadzu
 Varian
 SCIEX
 Perkin Elmer
+LC-Mass spectometry
+(LC)
+gas chromatography
+chromatography
+spectroscopy
+spectometry
+gas chromatography
+gas chromatography-mass spectrometry
+gas chromatography coupled mass spectrometry
+gas chromatography-coupled mass spectrometry
+liquid chromatography
+chromatography
+spectroscopy
+1H NMR
+ionization
+electrophoresis
+sequencing
+ionisation
+spectroscopic
+chromatographic
+spectrometer
+quadrupole time-of-flight
+Illumina
+Perlegen
+Affymetrix
+PCR
+Polymerase chain reaction

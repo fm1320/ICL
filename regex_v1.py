@@ -13,7 +13,8 @@ or if he doesn't input a parameter it will go through the list of all assays in 
 '''
 import re #time complexity issues of finite state machines ?
 import pandas as pd
-file_path="/content/drive/My Drive/Imperial college London/all_assays.csv"
+#file_path="/content/drive/My Drive/Imperial college London/all_assays.csv"
+file_path="./all_assays.csv"
 assay=[]
 df = pd.read_csv(file_path,dtype= str) # READ CSV AS STRING !!!
 assay = df.values.tolist()

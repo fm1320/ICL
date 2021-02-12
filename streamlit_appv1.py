@@ -45,6 +45,31 @@ def model_loader(link,foldername):
   #for file in files:
     #print(file)
   return end_path
+  
+def finder(text,user_assay=None):    
+    import pandas as pd
+    import re
+    file_path="./all_assays.csv"
+    assay=[]
+    df = pd.read_csv(file_path,dtype= str) # READ CSV AS STRING !!!
+    assay = df.values.tolist()
+    output=[]
+    if (user_assay==None): 
+      for i in range(len(assay)):
+       out2=re.findall(r'[^.?!]*(?<=[.?\s!])%s(?=[\s.?!])[^.?!]*[.?!]' % assay[i] , text ,  flags=re.IGNORECASE )
+       st.write('\n'.join(out2))
+       output.append(out2) # just a list with all the results
+      #return 0
+    # if the user chooses a custom assay not from the list
+    else:  
+     out2=re.findall(r'[^.?!]*(?<=[.?\s!])%s(?=[\s.?!])[^.?!]*[.?!]' % user_assay , text )
+     if (len(out2) == 0):
+      #print("No matching assays")
+     else:
+      output.append(out2) 
+      #print("At least one match was found :")
+      #print('\n'.join(out2))  
+    return output
 
 
 def main():
@@ -70,7 +95,7 @@ def main():
    elif choice == "NER":
       st.subheader("Named Entity Recognition")
       # Add a selectbox to the sidebar:
-      sel = st.sidebar.selectbox("Which NER model would you like to use ?", ["SciSpacy", "BiAssay", "Spacy core en","LG"])
+      sel = st.sidebar.selectbox("Which NER model would you like to use ?", ["SciSpacy", "BiAssay", "Spacy core en","LG","Regex"])
       
       if sel== "SciSpacy":
          #import scispacy
@@ -83,6 +108,9 @@ def main():
       elif sel=="LG":
          path=model_loader("https://github.com/fm1320/IC_NLP/releases/download/V3/V3-20210203T001829Z-001.zip", "V3")   
          nlp = spacy.load(path)
+      elif sel=="Regex":
+         iz=finder(raw_text,"")
+         st.write(iz)
       method = st.sidebar.selectbox("Choose input method (recommended:text box)", ["Text box", "URL"])   
 
       
