@@ -109,7 +109,8 @@ def main():
          path=model_loader("https://github.com/fm1320/IC_NLP/releases/download/V3/V3-20210203T001829Z-001.zip", "V3")   
          nlp = spacy.load(path)
       elif sel=="Regex":
-         iz=finder(raw_text,"")
+         r_text = st.text_area("Enter text for entity recognition with Regex","Text here")
+         iz=finder(r_text,"")
          st.write(iz)
       method = st.sidebar.selectbox("Choose input method (recommended:text box)", ["Text box", "URL"])   
 
