@@ -53,12 +53,15 @@ def finder(text,user_assay=None):
     assay=[]
     df = pd.read_csv(file_path,dtype= str) # READ CSV AS STRING !!!
     assay = df.values.tolist()
+    st.write(df.head(5))
     output=[]
-    if (user_assay==None): 
-      for i in range(len(assay)):
-       out2=re.findall(r'[^.?!]*(?<=[.?\s!])%s(?=[\s.?!])[^.?!]*[.?!]' % assay[i] , text ,  flags=re.IGNORECASE )
-       print('\n'.join(out2))
-       output.append(out2) # just a list with all the results
+    #if (user_assay==None): 
+     for i in range(len(assay)):
+      out2=re.findall( r'\b%s\b' % assay[i] , text ,  flags=re.IGNORECASE )
+      #out2=re.findall(r'[^.?!]*(?<=[.?\s!])%s(?=[\s.?!])[^.?!]*[.?!]' % assay[i] , text ,  flags=re.IGNORECASE )
+      #print('\n'.join(out2))
+      st.write(out2)
+      output.append(out2) # just a list with all the results
       #return 0
     # if the user chooses a custom assay not from the list
     #else:  
@@ -110,8 +113,9 @@ def main():
          nlp = spacy.load(path)
       elif sel=="Regex":
          r_text = st.text_area("Enter text for entity recognition with Regex","Text here")
-         iz=finder(r_text,"")
-         st.write("vmro")
+         
+		 iz=finder(r_text,"")
+         st.write(iz)
       method = st.sidebar.selectbox("Choose input method (recommended:text box)", ["Text box", "URL"])   
 
       
