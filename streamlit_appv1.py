@@ -92,21 +92,20 @@ def main():
    elif choice == "NER":
       st.subheader("Named Entity Recognition")
       # Add a selectbox to the sidebar:
-      sel = st.sidebar.selectbox("Which NER model would you like to use ?", ["SciSpacy", "BiAssay", "Spacy core en","LG","Regex"])
+      sel = st.sidebar.selectbox("Which NER model would you like to use ?", ["SciSpacy", "DL small", "Spacy core en","DL medium","Regex"])
       
       if sel== "SciSpacy":
          #import scispacy
          nlp = spacy.load("en_core_sci_sm")
-      elif sel=="BiAssay":
+      elif sel=="DL small":
          nlp = spacy.load('./BiA') #Location of directory of spacy model
       elif sel=="Spacy core en":
          import en_core_web_sm
          nlp = en_core_web_sm.load() 
-      elif sel=="LG":
+      elif sel=="DL medium":
          path=model_loader("https://github.com/fm1320/IC_NLP/releases/download/V3/V3-20210203T001829Z-001.zip", "V3")   
          nlp = spacy.load(path)
       elif sel=="Regex":
-         st.title("THIS PART IS UNDER DEVELOPMENT")
          r_text = st.text_area("Enter text for entity recognition with Regex","Text here")
          iz=finder(r_text,"")
          #st.write(iz)
