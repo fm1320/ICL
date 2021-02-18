@@ -75,7 +75,7 @@ def finder(text,user_assay):
     st.write("The sentences that have an assay:")
     s=set(sentc)
     sentc=list(s)
-    st.write(type(sentc),type(sentc[0]))
+    st.write(type(sentc),len(sentc))
     for j in range(len(sentc)-1):
             st.write(sentc[j])
     return 0
