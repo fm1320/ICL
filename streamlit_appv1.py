@@ -60,7 +60,7 @@ def finder(text,user_assay):
     pattern2=r'\b%s\b' #extracts a given word 
     index=[]
     sentc=[]
-    for i in range(len(assay)):
+    for i in range(len(assay)-1):
       tmp=re.findall(pattern2 %assay[i],text, flags=re.IGNORECASE)  
       if (len(tmp)>0):
        index.append(i)
