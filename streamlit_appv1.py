@@ -112,7 +112,7 @@ def main():
       elif sel=="Regex":
          r_text = st.text_area("Enter text for entity recognition with Regex","Text here")
          iz=finder(r_text,"")
-		 st.write("Sentences with ASSAY:",iz)
+         st.write("Sentences with ASSAY:",iz)
       method = st.sidebar.selectbox("Choose input method (recommended:text box)", ["Text box", "URL"])   
 
       
