@@ -68,16 +68,12 @@ def finder(text,user_assay):
       tmp1=re.findall(pattern1 %assay[i],text, flags=re.IGNORECASE)
       #st.write("Sentences that have the assay:" ,tmp1)
       if (len(tmp1)>0):
-       st.write("Sentences that have the assay:" ,tmp1)
+       st.write("Sentences that have an assay:" ,tmp1)
        sentc.append(tmp1)       
     res_list = [assay[j] for j in index]
     #print("Nuovo:", nuovo)
     st.write("The assays mentioned are: \n ", res_list)
-    st.write("The sentences that have an assay:")
-    st.write(len(sentc))
-    for j in range(len(sentc)-1):
-            st.write(sentc[j])
-    st.write("The assays mentioned are: \n ", sentc)
+    #st.write("The sentences that have an assay:")
     return sentc
 
 
@@ -120,7 +116,7 @@ def main():
       elif sel=="Regex":
          r_text = st.text_area("Enter text for entity recognition with Regex","Text here")
          iz=finder(r_text,"")
-         st.write("Sentences with ASSAY:",iz)
+         #st.write("Sentences with ASSAY:",iz)
       method = st.sidebar.selectbox("Choose input method (recommended:text box)", ["Text box", "URL"])   
 
       
