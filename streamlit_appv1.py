@@ -70,8 +70,12 @@ def finder(text,user_assay):
       sentc.append(tmp1)       
     res_list = [assay[j] for j in index]
     #print("Nuovo:", nuovo)
-    st.write("The assays mentioned are: \n ", sentc)
-    return sentc
+    st.write("The assays mentioned are: \n ", res_list)
+    st.write("The sentences that have an assay:")
+    for j in range(len(sentc)-1):
+        if(len(sentc[j]) > 0):
+            st.write(sentc[j])
+    return 0
 
 def main():
    """A Simple NLP app with Spacy-Streamlit"""
@@ -112,7 +116,6 @@ def main():
       elif sel=="Regex":
          r_text = st.text_area("Enter text for entity recognition with Regex","Text here")
          iz=finder(r_text,"")
-         st.write("Sentences with ASSAY:",iz)
       method = st.sidebar.selectbox("Choose input method (recommended:text box)", ["Text box", "URL"])   
 
       
