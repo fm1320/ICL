@@ -60,7 +60,7 @@ def finder(text,user_assay):
     pattern2=r'\b%s\b' #extracts a given word 
     index=[]
     sentc=[]
-    for i in range(len(assay)-1):
+    for i in range(len(assay)):
       tmp=re.findall(pattern2 %assay[i],text, flags=re.IGNORECASE)  
       if (len(tmp)>0):
        index.append(i)
@@ -68,7 +68,7 @@ def finder(text,user_assay):
       tmp1=re.findall(pattern1 %assay[i],text, flags=re.IGNORECASE)
       #st.write("Sentences that have the assay:" ,tmp1)
       if (len(tmp1)>0):
-       sentc.append(tmp1[i])
+       sentc.append(tmp1.group()
     res_list = [assay[j] for j in index]
     #print("Nuovo:", nuovo)
     st.write("The assays mentioned are: \n ", res_list)
