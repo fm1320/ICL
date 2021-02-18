@@ -76,7 +76,7 @@ def finder(text,user_assay):
     st.write(type(sentc),type(sentc[1]))
     s=set(sentc)
     sentc=list(s)
-    for j in range(len(sentc)-1):
+    for j in range(len(sentc)):
             st.write(sentc[j])
     return 0
 
