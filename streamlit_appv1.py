@@ -75,7 +75,7 @@ def finder(text,user_assay):
     st.write("The assays mentioned are: \n ", res_list)
     
     st.write("Sentences that have an assay:", sentc)
-    st.write(type(sentc),type(sentc[0]),len(sentc)
+    st.write(type(sentc),type(sentc[0]),len(sentc))
     #st.write("The sentences that have an assay:")
     return sentc
 
