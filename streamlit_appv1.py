@@ -70,7 +70,7 @@ def finder(text,user_assay):
     res_list = [assay[j] for j in index]
     #print("Nuovo:", nuovo)
     st.write("The assays mentioned are: \n ", sentc)
-    return res_list
+    return sentc
 
 def main():
    """A Simple NLP app with Spacy-Streamlit"""
