@@ -59,14 +59,17 @@ def finder(text,user_assay):
     pattern1=r'[^.?!]*(?<=[.?\s!])%s(?=[\s.?!])[^.?!]*[.?!]' #extracts full sentences that contain a word 
     pattern2=r'\b%s\b' #extracts a given word 
     index=[]
+	sentc=[]
     for i in range(len(assay)):
       tmp=re.findall(pattern2 %assay[i],text, flags=re.IGNORECASE)  
       if (len(tmp)>0):
        index.append(i)
        nuovo.append(tmp)
-    res_list = [assay[j] for j in index]
-    #print("Nuovo:", nuovo)
-    st.write("The assays mentioned are: \n ", res_list)
+      tmp1=re.findall(pattern1 %assay[i],text, flags=re.IGNORECASE)
+      sentc.append(tmp1)	   
+	res_list = [assay[j] for j in index]
+	#print("Nuovo:", nuovo)
+    st.write("The assays mentioned are: \n ", sentc)
     return res_list
 
 def main():
