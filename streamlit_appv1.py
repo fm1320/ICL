@@ -67,14 +67,16 @@ def finder(text,user_assay):
        nuovo.append(tmp)
       tmp1=re.findall(pattern1 %assay[i],text, flags=re.IGNORECASE)
       #st.write("Sentences that have the assay:" ,tmp1)
-      sentc.append(tmp1)       
+      if (len(tmp1)>0):
+       sentc.append(tmp1)       
     res_list = [assay[j] for j in index]
     #print("Nuovo:", nuovo)
     st.write("The assays mentioned are: \n ", res_list)
     st.write("The sentences that have an assay:")
     st.write(type(sentc),type(sentc[1]))
+    s=set(sentc)
+    sentc=list(s)
     for j in range(len(sentc)-1):
-        if(len(sentc[j]) > 0):
             st.write(sentc[j])
     return 0
 
