@@ -72,9 +72,9 @@ def finder(text,user_assay):
     res_list = [assay[j] for j in index]
     #print("Nuovo:", nuovo)
     st.write("The assays mentioned are: \n ", res_list)
-	
+    
     st.write("Sentences that have an assay:", type(sentc[0]))
-	st.write(type(sentc))
+    st.write(type(sentc))
     #st.write("The sentences that have an assay:")
     return sentc
 
