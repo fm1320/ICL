@@ -13,25 +13,7 @@ import trafilatura
 import en_core_web_md
 #import zipfile
 #!python -m spacy download en_core_web_lg
-@st.cache(show_spinner=True)
-def zero():
-    from transformers import pipeline
-    classifier = pipeline("zero-shot-classification")
-    sequence = ('Metabolomics is used to determine the metabolic profile of biological samples, identify specific biomarkers,' 
-       'and explore possible metabolic pathways. It has been used during drug development [1], '
-       'and in clinical disease research [2, 3], pathology [4], toxicology [5] and nutrition studies [6].' 
-       'Metabolomics mainly utilizes NMR spectroscopy [7], liquid chromatography (LC)–mass spectrometry [8] and' 
-       'gas chromatography–mass spectrometry [9] to analyze and evaluate biological specimens. '
-       'Each analytical technique has its own advantages and shortcomings. none of them can be used individually' 
-       'to systematically and accurately identify metabolites in complex biological matrices. '
-       'Since accurate metabolite identification directly determines the usefulness of the metabolomic analysis,' 
-       'metabolite identification has gained increased attention from the metabolomics research community. '
-       '1H NMR spectroscopy is often used for metabolomics research. As all 1H nucleuses have the same sensitivity,' 
-       'the reproducibility of NMR spectroscopy is typically high.' )   
-    candidate_labels = ["NMR", "Liquid chromatography", "gas chromatography", "PCR"]
-    hypothesis_template = "What is used {}."
-    out=classifier(sequence, candidate_labels, multi_class=True,  hypothesis_template=hypothesis_template)
-    return out
+
 
 
 @st.cache(suppress_st_warning=True)
@@ -140,8 +122,6 @@ def main():
       elif sel=="Regex":
          r_text = st.text_area("Enter text for entity recognition with Regex","Text here")
          iz=finder(r_text,"")
-         #st.write("Sentences with ASSAY:",iz)
-         st.write(zero())
       method = st.sidebar.selectbox("Choose input method (recommended:text box)", ["Text box", "URL"])   
 
       
