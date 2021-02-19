@@ -223,15 +223,15 @@ def main():
          if len(labels) == 0 or len(sequence) == 0:
             st.write('Enter some text and at least one possible topic to see predictions.')
             return
-        if do_print_code:
+         if do_print_code:
             st.markdown(CODE_DESC.format(model_id))
 
-        with st.spinner('Classifying...'):
+         with st.spinner('Classifying...'):
             top_topics, scores = get_most_likely(model_id, sequence, labels, hypothesis_template, multi_class, do_print_code)
 
-        plot_result(top_topics[::-1][-10:], scores[::-1][-10:])
+         plot_result(top_topics[::-1][-10:], scores[::-1][-10:])
 
-        if "socat" not in [p.name() for p in psutil.process_iter()]:
+         if "socat" not in [p.name() for p in psutil.process_iter()]:
             os.system('socat tcp-listen:8000,reuseaddr,fork tcp:localhost:8001 &')  
             
             
