@@ -15,8 +15,8 @@ import en_core_web_md
 #!python -m spacy download en_core_web_lg
 
 ##################################################################################################
-from transformers import AutoModelForSequenceClassification, AutoTokenizer, pipeline
 import torch
+from transformers import AutoModelForSequenceClassification, AutoTokenizer, pipeline
 import numpy as np
 import contextlib
 import plotly.express as px
