@@ -31,7 +31,7 @@ def zero():
     candidate_labels = ["NMR", "Liquid chromatography", "gas chromatography", "PCR"]
     hypothesis_template = "What is used {}."
     out=classifier(sequence, candidate_labels, multi_class=True,  hypothesis_template=hypothesis_template)
- return out
+    return out
 
 
 @st.cache(suppress_st_warning=True)
