@@ -56,7 +56,6 @@ parso==0.7.0
 pathtools==0.1.2
 pexpect==4.8.0
 pickleshare==0.7.5
-Pillow==7.1.2
 prometheus-client==0.7.1
 prompt-toolkit==3.0.5
 protobuf==3.12.0
@@ -68,14 +67,12 @@ pyrsistent==0.16.0
 python-dateutil==2.8.1
 pytz==2020.1
 pyzmq==19.0.1
-regex==2020.5.14
 requests==2.23.0
 s3transfer==0.3.3
 sacremoses==0.0.43
 Send2Trash==1.5.0
 sentencepiece==0.1.90
 six==1.14.0
-streamlit==0.60.0
 terminado==0.8.3
 testpath==0.4.4
 tokenizers==0.7.0
