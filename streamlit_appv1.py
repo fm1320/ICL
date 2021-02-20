@@ -208,7 +208,7 @@ def main():
          r_text = st.text_area("Enter text for entity recognition with Regex","Text here")
          iz=finder(r_text,"")
          ######################################
-		 '''
+         '''
          model_id = model_ids[model_desc]
          ex_names, ex_map = load_examples(model_id)
 
