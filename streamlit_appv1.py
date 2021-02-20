@@ -15,6 +15,7 @@ import en_core_web_md
 #!python -m spacy download en_core_web_lg
 
 ##################################################################################################
+'''
 import torch
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, pipeline
 import numpy as np
@@ -98,7 +99,7 @@ def plot_result(top_topics, scores):
     fig.update(layout_coloraxis_showscale=False)
     fig.update_traces(texttemplate='%{text:0.1f}%', textposition='outside')
     st.plotly_chart(fig)
-
+'''
 #################################################################################################
 @st.cache(suppress_st_warning=True)
 def model_loader(link,foldername):
@@ -207,6 +208,7 @@ def main():
          r_text = st.text_area("Enter text for entity recognition with Regex","Text here")
          iz=finder(r_text,"")
          ######################################
+		 '''
          model_id = model_ids[model_desc]
          ex_names, ex_map = load_examples(model_id)
 
@@ -228,9 +230,8 @@ def main():
          plot_result(top_topics[::-1][-10:], scores[::-1][-10:])
 
          if "socat" not in [p.name() for p in psutil.process_iter()]:
-            os.system('socat tcp-listen:8000,reuseaddr,fork tcp:localhost:8001 &')  
-            
-            
+            os.system('socat tcp-listen:8000,reuseaddr,fork tcp:localhost:8001 &')     
+         '''   
          ###########################################
       method = st.sidebar.selectbox("Choose input method (recommended:text box)", ["Text box", "URL"])   
 
