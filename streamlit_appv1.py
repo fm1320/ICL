@@ -26,6 +26,36 @@ import datetime
 import os
 import psutil
 
+MODEL_DESC = {
+    'Bart MNLI': """Bart with a classification head trained on MNLI.\n\nSequences are posed as NLI premises and topic labels are turned into premises, i.e. `business` -> `This text is about business.`""",
+    'Bart MNLI + Yahoo Answers': """Bart with a classification head trained on MNLI and then further fine-tuned on Yahoo Answers topic classification.\n\nSequences are posed as NLI premises and topic labels are turned into premises, i.e. `business` -> `This text is about business.`""",
+    'XLM Roberta XNLI (cross-lingual)': """XLM Roberta, a cross-lingual model, with a classification head trained on XNLI. Supported languages include: _English, French, Spanish, German, Greek, Bulgarian, Russian, Turkish, Arabic, Vietnamese, Thai, Chinese, Hindi, Swahili, and Urdu_.
+Note that this model seems to be less reliable than the English-only models when classifying longer sequences.
+Examples were automatically translated and may contain grammatical mistakes.
+Sequences are posed as NLI premises and topic labels are turned into premises, i.e. `business` -> `This text is about business.`""",
+}
+
+ZSL_DESC = """Recently, the NLP science community has begun to pay increasing attention to zero-shot and few-shot applications, such as in the [paper from OpenAI](https://arxiv.org/abs/2005.14165) introducing GPT-3. This demo shows how 🤗 Transformers can be used for zero-shot topic classification, the task of predicting a topic that the model has not been trained on."""
+
+CODE_DESC = """```python
+from transformers import pipeline
+classifier = pipeline('zero-shot-classification',
+                      model='{}')
+hypothesis_template = 'This text is about {{}}.' # the template used in this demo
+classifier(sequence, labels,
+           hypothesis_template=hypothesis_template,
+           multi_class=multi_class)
+# {{'sequence' ..., 'labels': ..., 'scores': ...}}
+```"""
+
+model_ids = {
+    'Bart MNLI': 'facebook/bart-large-mnli',
+    'Bart MNLI + Yahoo Answers': 'joeddav/bart-large-mnli-yahoo-answers',
+    'XLM Roberta XNLI (cross-lingual)': 'joeddav/xlm-roberta-large-xnli'
+}
+
+
+
 device = 0 if torch.cuda.is_available() else -1
 
 @st.cache(allow_output_mutation=True)
@@ -68,40 +98,6 @@ def plot_result(top_topics, scores):
     fig.update(layout_coloraxis_showscale=False)
     fig.update_traces(texttemplate='%{text:0.1f}%', textposition='outside')
     st.plotly_chart(fig)
-
-
-MODEL_DESC = {
-    'Bart MNLI': """Bart with a classification head trained on MNLI.\n\nSequences are posed as NLI premises and topic labels are turned into premises, i.e. `business` -> `This text is about business.`""",
-    'Bart MNLI + Yahoo Answers': """Bart with a classification head trained on MNLI and then further fine-tuned on Yahoo Answers topic classification.\n\nSequences are posed as NLI premises and topic labels are turned into premises, i.e. `business` -> `This text is about business.`""",
-    'XLM Roberta XNLI (cross-lingual)': """XLM Roberta, a cross-lingual model, with a classification head trained on XNLI. Supported languages include: _English, French, Spanish, German, Greek, Bulgarian, Russian, Turkish, Arabic, Vietnamese, Thai, Chinese, Hindi, Swahili, and Urdu_.
-Note that this model seems to be less reliable than the English-only models when classifying longer sequences.
-Examples were automatically translated and may contain grammatical mistakes.
-Sequences are posed as NLI premises and topic labels are turned into premises, i.e. `business` -> `This text is about business.`""",
-}
-
-ZSL_DESC = """Recently, the NLP science community has begun to pay increasing attention to zero-shot and few-shot applications, such as in the [paper from OpenAI](https://arxiv.org/abs/2005.14165) introducing GPT-3. This demo shows how 🤗 Transformers can be used for zero-shot topic classification, the task of predicting a topic that the model has not been trained on."""
-
-CODE_DESC = """```python
-from transformers import pipeline
-classifier = pipeline('zero-shot-classification',
-                      model='{}')
-hypothesis_template = 'This text is about {{}}.' # the template used in this demo
-classifier(sequence, labels,
-           hypothesis_template=hypothesis_template,
-           multi_class=multi_class)
-# {{'sequence' ..., 'labels': ..., 'scores': ...}}
-```"""
-
-model_ids = {
-    'Bart MNLI': 'facebook/bart-large-mnli',
-    'Bart MNLI + Yahoo Answers': 'joeddav/bart-large-mnli-yahoo-answers',
-    'XLM Roberta XNLI (cross-lingual)': 'joeddav/xlm-roberta-large-xnli'
-}
-
-
-
-
-
 
 #################################################################################################
 @st.cache(suppress_st_warning=True)
