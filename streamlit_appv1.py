@@ -237,8 +237,8 @@ def main():
 
       
       if method == "Text box" and sel !="Regex":
-         raw_text = st.text_area("Enter text for entity recognition","Metabolomics mainly utilizes NMR spectroscopy, liquid chromatography (LC)–mass spectrometry and gas chromatography – mass spectrometry to analyze and evaluate biological specimens. Each analytical technique has its own advantages and shortcomings." 
-         #Metabolomics mainly utilizes NMR spectroscopy, liquid chromatography (LC)–mass spectrometry [8] and gas chromatography – mass spectrometry to analyze and evaluate biological specimens. Each analytical technique has its own advantages and shortcomings. none of them can be used individually
+         raw_text = st.text_area("Enter text for entity recognition","Text Here" 
+         #Metabolomics mainly utilizes NMR spectroscopy, liquid chromatography (LC)–mass spectrometry and gas chromatography – mass spectrometry to analyze and evaluate biological specimens. Each analytical technique has its own advantages and shortcomings.
          docx = nlp(raw_text)
          spacy_streamlit.visualize_ner(docx,labels=nlp.get_pipe('ner').labels)
 
