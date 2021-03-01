@@ -205,7 +205,8 @@ def main():
          path=model_loader("https://github.com/fm1320/IC_NLP/releases/download/V3/V3-20210203T001829Z-001.zip", "V3")   
          nlp = spacy.load(path)
       elif sel=="Regex":
-         r_text = st.text_area("Enter text for entity recognition with Regex","Text here")
+         #r_text = st.text_area("Enter text for entity recognition with Regex","Text here")
+         r_text = st.text_area("Enter text for entity recognition with Regex","However, it is very challenging to elucidate the structure of all metabolites present in biofluid samples. The large number of unknown or unidentified metabolites with high dynamic concentration range, extensive chemical diversity and different physical properties poses a substantial analytical challenge. Metabolic profiling studies are often geared toward finding differences in the levels of metabolites that are statistically correlated with a clinical outcome, dietary intervention or toxic exposure when compared to a control group. The chemical assignment of this reduced panel of biologically relevant metabolites is possible using statistical spectroscopic tools9–11, two-dimensional (2D) NMR spectroscopic analysis12–14, separation and pre-concentration techniques11, various chromatographic and mass spectroscopy (MS)-based analytical platforms.")
          iz=finder(r_text,"")
          ######################################
          # '''
