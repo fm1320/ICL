@@ -253,7 +253,7 @@ def main():
    
    elif choice == "Summarization":
       #Textbox for text user is entering
-      st.subheader("Enter the text you'd like to summarize.")
+      st.subheader("Enter the text you'd like to summarize.(Here is an example that can be pasted in the text box")
       raw_text = st.text_area('''
     For over three decades, NMR spectroscopy has been widely applied in metabolic profiling and phenotyping1,2,3. The technology allows for accurate high-throughput screening of thousands of metabolites (small molecular species <1 kDa) present in a biological sample4,5,6,7, such as urine, plasma, feces, saliva and multiple types of tissues, as well as food8 and plant extracts. NMR spectroscopy provides robust multi-metabolite fingerprints of hundreds of metabolites in many biofluids, many of which are listed in spectral databases, particularly for common biofluids in urine and blood.
     However, it is very challenging to elucidate the structure of all metabolites present in biofluid samples. The large number of unknown or unidentified metabolites with high dynamic concentration range, extensive chemical diversity and different physical properties poses a substantial analytical challenge. Metabolic profiling studies are often geared toward finding differences in the levels of metabolites that are statistically correlated with a clinical outcome, dietary intervention or toxic exposure when compared to a control group. The chemical assignment of this reduced panel of biologically relevant metabolites is possible using statistical spectroscopic tools9,10,11, two-dimensional (2D) NMR spectroscopic analysis12,13,14, separation and pre-concentration techniques11, various chromatographic and mass spectroscopy 
@@ -267,6 +267,7 @@ def main():
       summWords = summarize(raw_text)
       st.subheader("Summary")
       st.write(summWords)
+      st.write("*Source: Garcia-Perez, I., Posma, J.M., Serrano-Contreras, J.I. et al. Identifying unknown metabolites using NMR-based metabolic profiling techniques. Nat Protoc 15, 2538–2567 (2020). https://doi.org/10.1038/s41596-020-0343-3")
       
    elif choice == "Zero shot learning":
       st.write("""Due to resource constraints, this demo is moved to the link below:""")    
