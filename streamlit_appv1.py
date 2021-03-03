@@ -180,7 +180,7 @@ def main():
       st.markdown(link, unsafe_allow_html=True)
       st.write("""<---- Choose and try out one of the NLP tasks available from the drop down menu on the left""")
       st.markdown("![Alt Text](https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/Imperial_College_London_monotone_logo.jpg/320px-Imperial_College_London_monotone_logo.jpg)")
-      
+      st.write("*Text examples source: Garcia-Perez, I., Posma, J.M., Serrano-Contreras, J.I. et al. Identifying unknown metabolites using NMR-based metabolic profiling techniques. Nat Protoc 15, 2538–2567 (2020). https://doi.org/10.1038/s41596-020-0343-3")
       
       #st.subheader("Tokenization")
       #raw_text = st.text_area("Your Text","Enter Text Here")
@@ -267,7 +267,7 @@ def main():
       summWords = summarize(raw_text)
       st.subheader("Summary")
       st.write(summWords)
-      st.write("*Source: Garcia-Perez, I., Posma, J.M., Serrano-Contreras, J.I. et al. Identifying unknown metabolites using NMR-based metabolic profiling techniques. Nat Protoc 15, 2538–2567 (2020). https://doi.org/10.1038/s41596-020-0343-3")
+      
       
    elif choice == "Zero shot learning":
       st.write("""Due to resource constraints, this demo is moved to the link below:""")    
