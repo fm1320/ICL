@@ -162,8 +162,8 @@ def finder(text,user_assay):
     #print("Nuovo:", nuovo)
     res_list=list(set(res_list))
     st.write("The assays mentioned are: \n ", res_list)
-    sentc=list(set(sentc))
-    st.write("Some sentences that mention an assay:", sentc)
+    #sentc=list(set(sentc))
+    #st.write("Some sentences that mention an assay:", sentc)
     #st.write("Here are some sentences that mention an assay:")
     return sentc
 
