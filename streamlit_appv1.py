@@ -274,6 +274,8 @@ def main():
       st.write("""Due to resource constraints, this demo is moved to the link below:""")    
       link = '[Zero shot learning for NER demo](https://colab.research.google.com/drive/1zKDbjLo9vyEuSRotSSVwFLyaA61o1ceG#scrollTo=hkfE6NRA0Dzy)'
       st.markdown(link, unsafe_allow_html=True) 
+      st.write("*Thanks to Hugging face's wonderful model repository and inspired by Joe Davison (researcher at hugging face")  
+      hug = '[Hugging face](https://huggingface.co/)'
     
 
 if __name__ == '__main__':
