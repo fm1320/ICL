@@ -163,7 +163,7 @@ def finder(text,user_assay):
     res_list=list(set(res_list))
     st.write("The assays mentioned are: \n ", res_list)
     sentc=list(set(sentc))
-    st.write("Sentences that have an assay:", sentc)
+    #st.write("Sentences that have an assay:", sentc)
     #st.write("The sentences that have an assay:")
     return sentc
 
@@ -191,20 +191,20 @@ def main():
    elif choice == "NER":
       st.subheader("Named Entity Recognition")
       # Add a selectbox to the sidebar:
-      sel = st.sidebar.selectbox("Which NER model would you like to use ?", ["SciSpacy", "DL small", "Spacy core en","DL medium","Regex"])
+      sel = st.sidebar.selectbox("Which NER model would you like to use ?", ["Spacy core en default","SpaCy Bloom embedding DL","String/Regex matching"])
       
-      if sel== "SciSpacy":
+      # if sel== "SciSpacy":
          #import scispacy
-         nlp = spacy.load("en_core_sci_sm")
-      elif sel=="DL small":
-         nlp = spacy.load('./BiA') #Location of directory of spacy model
-      elif sel=="Spacy core en":
+         # nlp = spacy.load("en_core_sci_sm")
+      # elif sel=="DL small":
+         # nlp = spacy.load('./BiA') #Location of directory of spacy model
+      if sel=="Spacy core en default":
          import en_core_web_sm
          nlp = en_core_web_sm.load() 
-      elif sel=="DL medium":
+      elif sel=="SpaCy Bloom embedding DL":
          path=model_loader("https://github.com/fm1320/IC_NLP/releases/download/V3/V3-20210203T001829Z-001.zip", "V3")   
          nlp = spacy.load(path)
-      elif sel=="Regex":
+      elif sel=="String/Regex matching":
          #r_text = st.text_area("Enter text for entity recognition with Regex","Text here")
          r_text = st.text_area("Enter text for entity recognition with Regex","However, it is very challenging to elucidate the structure of all metabolites present in biofluid samples. The large number of unknown or unidentified metabolites with high dynamic concentration range, extensive chemical diversity and different physical properties poses a substantial analytical challenge. Metabolic profiling studies are often geared toward finding differences in the levels of metabolites that are statistically correlated with a clinical outcome, dietary intervention or toxic exposure when compared to a control group. The chemical assignment of this reduced panel of biologically relevant metabolites is possible using statistical spectroscopic tools9–11, two-dimensional (2D) NMR spectroscopic analysis12–14, separation and pre-concentration techniques11, various chromatographic and mass spectroscopy (MS)-based analytical platforms.")
          iz=finder(r_text,"")
