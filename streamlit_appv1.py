@@ -191,7 +191,7 @@ def main():
    elif choice == "NER":
       st.subheader("Named Entity Recognition")
       # Add a selectbox to the sidebar:
-      sel = st.sidebar.selectbox("Which NER model would you like to use ?", ["Spacy core en default","SpaCy Bloom embedding DL","String/Regex matching"])
+      sel = st.sidebar.selectbox("Which NER model would you like to use ?", ["SpaCy Bloom embedding DL","Spacy core en default","String/Regex matching"])
       
       # if sel== "SciSpacy":
          #import scispacy
@@ -204,6 +204,7 @@ def main():
       elif sel=="Spacy core en default":
          import en_core_web_sm
          nlp = en_core_web_sm.load() 
+         st.write("*This is an example of a default model with general entities. Choose one of the other two to see assay recognition.")
       elif sel=="String/Regex matching":
          #r_text = st.text_area("Enter text for entity recognition with Regex","Text here")
          r_text = st.text_area("Enter text for entity recognition with Regex","However, it is very challenging to elucidate the structure of all metabolites present in biofluid samples. The large number of unknown or unidentified metabolites with high dynamic concentration range, extensive chemical diversity and different physical properties poses a substantial analytical challenge. Metabolic profiling studies are often geared toward finding differences in the levels of metabolites that are statistically correlated with a clinical outcome, dietary intervention or toxic exposure when compared to a control group. The chemical assignment of this reduced panel of biologically relevant metabolites is possible using statistical spectroscopic tools9–11, two-dimensional (2D) NMR spectroscopic analysis12–14, separation and pre-concentration techniques11, various chromatographic and mass spectroscopy (MS)-based analytical platforms.")
