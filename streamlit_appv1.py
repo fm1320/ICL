@@ -205,8 +205,6 @@ def main():
          import en_core_web_sm
          nlp = en_core_web_sm.load() 
       elif sel=="String/Regex matching":
-         import en_core_web_sm
-         nlp = en_core_web_sm.load() 
          #r_text = st.text_area("Enter text for entity recognition with Regex","Text here")
          r_text = st.text_area("Enter text for entity recognition with Regex","However, it is very challenging to elucidate the structure of all metabolites present in biofluid samples. The large number of unknown or unidentified metabolites with high dynamic concentration range, extensive chemical diversity and different physical properties poses a substantial analytical challenge. Metabolic profiling studies are often geared toward finding differences in the levels of metabolites that are statistically correlated with a clinical outcome, dietary intervention or toxic exposure when compared to a control group. The chemical assignment of this reduced panel of biologically relevant metabolites is possible using statistical spectroscopic tools9–11, two-dimensional (2D) NMR spectroscopic analysis12–14, separation and pre-concentration techniques11, various chromatographic and mass spectroscopy (MS)-based analytical platforms.")
          iz=finder(r_text,"")
@@ -239,12 +237,12 @@ def main():
       method = st.sidebar.selectbox("Choose input method (recommended:text box)", ["Text box", "URL"])   
 
       
-      if method == "Text box" and sel !="Regex":
+      if method == "Text box" and sel !="String/Regex matching":
          raw_text = st.text_area("Enter text for entity recognition","However, it is very challenging to elucidate the structure of all metabolites present in biofluid samples. The large number of unknown or unidentified metabolites with high dynamic concentration range, extensive chemical diversity and different physical properties poses a substantial analytical challenge. Metabolic profiling studies are often geared toward finding differences in the levels of metabolites that are statistically correlated with a clinical outcome, dietary intervention or toxic exposure when compared to a control group. The chemical assignment of this reduced panel of biologically relevant metabolites is possible using statistical spectroscopic tools9–11, two-dimensional (2D) NMR spectroscopic analysis12–14, separation and pre-concentration techniques11, various chromatographic and mass spectroscopy (MS)-based analytical platforms.")   
          docx = nlp(raw_text)
          spacy_streamlit.visualize_ner(docx,labels=nlp.get_pipe('ner').labels)
 
-      if method == "URL" and sel !="Regex":
+      if method == "URL" and sel !="String/Regex matching":
          user_input = st.text_input("Enter page URL of an HTML file")
          if user_input is not None:
             downloaded = trafilatura.fetch_url(user_input)
