@@ -222,9 +222,9 @@ img_plot = axarr[0,1].imshow(grad_cmap_img1, cmap='jet');
 axarr[0,1].axis('off')
 axarr[0,1].set_title('Grad-CAM')
     
-axial_overlay=cv2.addWeighted(ct_img_1,0.4,grad_cmap_img1 ,0.6, 0) # Does an image overlay
+plot1_overlay=cv2.addWeighted(ct_img_1,0.4,grad_cmap_img1 ,0.6, 0) # Does an image overlay
     
-img_plot = axarr[0,2].imshow(axial_overlay,cmap='jet');
+img_plot = axarr[0,2].imshow(plot1_overlay,cmap='jet');
 axarr[0,2].axis('off')
 axarr[0,2].set_title('Overlay')
 
@@ -238,8 +238,8 @@ img_plot = axarr[1,1].imshow(grad_cmap_img2, cmap='jet');
 axarr[1,1].axis('off')
 axarr[1,1].set_title('Grad-CAM')
     
-Coronal_overlay=cv2.addWeighted(ct_img_2,0.4,grad_cmap_img2, 0.6, 0) #Does an image overlay
+plot2_overlay=cv2.addWeighted(ct_img_2,0.4,grad_cmap_img2, 0.6, 0) #Does an image overlay
     
-img_plot = axarr[1,2].imshow(Coronal_overlay,cmap='jet');
+img_plot = axarr[1,2].imshow(plot2_overlay,cmap='jet');
 axarr[1,2].axis('off')
 axarr[1,2].set_title('Overlay')
