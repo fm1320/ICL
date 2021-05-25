@@ -131,26 +131,31 @@ io_img=tf.expand_dims(io_img, axis=0)
 # Class index is none because its softmax in this case
 # This makes sense if the models uses categorical crossentropy and has more classes
 CLASS_INDEX=None
+
+# This Gradient tape function should be adapted depending on whether there is a 
+# softmax or a categorical crossentropy loss
 # Computing the gradient of the top predicted class for our input image
 # with respect to the activations of the last conv layer
 with tf.GradientTape() as tape:
     conv_outputs, predictions = grad_model(io_img)
     if len(predictions)==1:
       # Binary Classification
-      loss = predictions[0]
+      loss = 1- predictions[0]  # This is what makes the scan "ABNORMAL"
+      #loss = predictions[:, CLASS_INDEX] #This is the "anti class or what makes the scan "NORMAL"
     else:
-      if CLASS_INDEX is None:
+      if CLASS_INDEX is None: # This is if there are more categories 
         CLASS_INDEX=tf.argmax(predictions[0]) #take top prediciton ?
-    loss = predictions[:, CLASS_INDEX]
+        loss = predictions[:, CLASS_INDEX]
+    
 
 # This is the gradient of the output neuron (top predicted or chosen)
 # with regard to the output feature map of the last conv layer    
-# Extract filters and gradients
+# Extract filters and gradients of the top predicted class
 output = conv_outputs[0] # output of the conv layer
 grads = tape.gradient(loss, conv_outputs)[0]
 
 
-#Guided gradient, to better visualize heatmap and offer more representable results, works without the next 3 lines but heatmaps look different
+# Guided gradient, to better visualize heatmap and offer more representable results, works without the next 3 lines but heatmaps look slightly different
 gate_f = tf.cast(output > 0, 'float32')
 gate_r = tf.cast(grads > 0, 'float32')
 guided_grads = tf.cast(output > 0, 'float32') * tf.cast(grads > 0, 'float32') * grads
@@ -184,8 +189,8 @@ heatmap = (capi - capi.min()) / (capi.max() - capi.min()) #normalize values betw
 
 f, axarr = plt.subplots(2,3,figsize=(15,10));
 f.suptitle('Grad-CAM')
-slice_count=40 # slice range from -64 to 64 (depth)
-slice_count2=-20
+slice_count=-10    # slice range from -64 to 64 (depth)
+slice_count2=39 #39-41
 
 
 # Uncomment for Coronal viewpoint 
