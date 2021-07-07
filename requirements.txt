@@ -1,5 +1,5 @@
 gensim==3.8.3
-Pillow==8.1.1
+Pillow==8.2.0
 regex==2020.11.13
 spacy==2.3.5
 spacy-streamlit==0.1.0
