@@ -213,12 +213,13 @@ def plot_slices_CT(num_rows, num_columns, width, height, data):
     for i in range(rows_data):
         for j in range(columns_data):
             img_plot= axarr[i, j].imshow(data[i][j], cmap="gray")
+            img_plot.set_clim([0,1])
             axarr[i, j].axis("off")
-            f.colorbar(img_plot, ax=axarr[i,j])
+            f.colorbar(img_plot, ax=axarr[i,j], fraction=0.046, pad=0.05,  ticks=np.arange(0.0, 1.1, 0.1))
     plt.show()
 # Visualize montage of slices.
 # 4 rows and 10 columns for 100 slices of the CT scan.
-plot_slices_CT(4, 10, 128, 128, np.squeeze(resized_img[:, :,:40]))
+#plot_slices_CT(4, 10, 128, 128, np.squeeze(resized_img[:,:,:40]))
 
 # plotting heatmaps
 def plot_slices_HM(num_rows, num_columns, width, height, data):
@@ -242,12 +243,13 @@ def plot_slices_HM(num_rows, num_columns, width, height, data):
     for i in range(rows_data):
         for j in range(columns_data):
             img_plot= axarr[i, j].imshow(data[i][j], cmap="viridis")
+            img_plot.set_clim([0,1])
             axarr[i, j].axis("off")
-            f.colorbar(img_plot, ax=axarr[i,j], ticks=np.arange(0.0, 1.0, 0.1))
+            f.colorbar(img_plot, ax=axarr[i,j], fraction=0.046, pad=0.05,  ticks=np.arange(0.0, 1.1, 0.1))
     plt.show()
 # Visualize montage of slices.
 # 4 rows and 10 columns for 100 slices of the CT scan.
-plot_slices_HM(4, 10, 128, 128, np.squeeze(heatmap[:, :,:40]))
+#plot_slices_HM(4, 10, 128, 128, np.squeeze(heatmap[:, :10,:]))
 
 
 def plot_slices_OL(num_rows, num_columns, width, height, CT_data, HM_data):
@@ -281,8 +283,9 @@ def plot_slices_OL(num_rows, num_columns, width, height, CT_data, HM_data):
         for j in range(columns_data):
             plot_overlay=cv2.addWeighted(CT_data[i][j], 0.4, HM_data[i][j], 0.6, 0)
             img_plot= axarr[i, j].imshow(plot_overlay, cmap="viridis")
+            img_plot.set_clim([0,1])
             axarr[i, j].axis("off")
-            f.colorbar(img_plot, ax=axarr[i,j], ticks=np.arange(0.0, 1.0, 0.1) )
+            f.colorbar(img_plot, ax=axarr[i,j], fraction=0.046, pad=0.05, ticks=np.arange(0.0, 1.1, 0.1) )
     plt.show()
 
 plot_slices_OL(4, 10, 128, 128, np.squeeze(resized_img[:, :,:40]) , np.squeeze(heatmap[:, :,:40]) )
@@ -333,40 +336,46 @@ grad_cmap_img2=np.rot90(np.squeeze(heatmap[:,slice_count2,:]))
 # First slice
 
 img_plot = axarr[0,0].imshow(ct_img_1, cmap='gray');
+img_plot.set_clim([0,1])
 axarr[0,0].axis('off')
 axarr[0,0].set_title('CT')
-f.colorbar(img_plot, ax=axarr[0,0], fraction=0.046, pad=0.05, ticks=np.arange(0.0, 1.0, 0.1)) # the ticks and fraction and pad parameters just 
+f.colorbar(img_plot, ax=axarr[0,0], fraction=0.046, pad=0.05, ticks=np.arange(0.0, 1.1, 0.1)) # the ticks and fraction and pad parameters just 
                                                                                               # change and position the colorbar's apperance
 
     
 img_plot = axarr[0,1].imshow(grad_cmap_img1, cmap='viridis');
+img_plot.set_clim([0,1])
 axarr[0,1].axis('off')
 axarr[0,1].set_title('Grad-CAM')
-f.colorbar(img_plot, ax=axarr[0,1], fraction=0.046, pad=0.05, ticks=np.arange(0.0, 1.0, 0.1))
+f.colorbar(img_plot, ax=axarr[0,1], fraction=0.046, pad=0.05, ticks=np.arange(0.0, 1.1, 0.1))
 
 plot1_overlay=cv2.addWeighted(ct_img_1,0.4,grad_cmap_img1 ,0.6, 0) # Does an image overlay
     
 img_plot = axarr[0,2].imshow(plot1_overlay,cmap='viridis');
+img_plot.set_clim([0,1])
 axarr[0,2].axis('off')
 axarr[0,2].set_title('Overlay')
-f.colorbar(img_plot, ax=axarr[0,2], fraction=0.046, pad=0.05, ticks=np.arange(0.0, 1.0, 0.1))
+f.colorbar(img_plot, ax=axarr[0,2], fraction=0.046, pad=0.05, ticks=np.arange(0.0, 1.1, 0.1))
 
 # Second slice
 
 img_plot = axarr[1,0].imshow(ct_img_2, cmap='gray');
+img_plot.set_clim([0,1])
 axarr[1,0].axis('off')
 axarr[1,0].set_title('CT')
-f.colorbar(img_plot, ax=axarr[1,0], fraction=0.046, pad=0.05, ticks=np.arange(0.0, 1.0, 0.1))
+f.colorbar(img_plot, ax=axarr[1,0], fraction=0.046, pad=0.05, ticks=np.arange(0.0, 1.1, 0.1))
 
 img_plot = axarr[1,1].imshow(grad_cmap_img2, cmap='viridis');
+img_plot.set_clim([0,1])
 axarr[1,1].axis('off')
 axarr[1,1].set_title('Grad-CAM')
-f.colorbar(img_plot, ax=axarr[1,1], fraction=0.046, pad=0.05, ticks=np.arange(0.0, 1.0, 0.1))
+f.colorbar(img_plot, ax=axarr[1,1], fraction=0.046, pad=0.05, ticks=np.arange(0.0, 1.1, 0.1))
 
 plot2_overlay=cv2.addWeighted(ct_img_2,0.4,grad_cmap_img2, 0.6, 0) #Does an image overlay
 
     
 img_plot = axarr[1,2].imshow(plot2_overlay,cmap='viridis');
+img_plot.set_clim([0,1])
 axarr[1,2].axis('off')
 axarr[1,2].set_title('Overlay')
-f.colorbar(img_plot, ax=axarr[1,2], fraction=0.046, pad=0.05, ticks=np.arange(0.0, 0.81, 0.1))
+f.colorbar(img_plot, ax=axarr[1,2], fraction=0.046, pad=0.05, ticks=np.arange(0.0, 1.1, 0.1))
